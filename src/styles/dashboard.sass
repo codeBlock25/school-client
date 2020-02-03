@@ -1,0 +1,107 @@
+.Dashboard 
+    position: fixed 
+    top: 3px
+    left: 3px
+    width: calc( 100vw - 6px )
+    height: calc( 100vh - 6px )
+    display: block
+    background: #ffffff
+    z-index: 10
+    border-radius: 5px
+    * 
+        font-family: 'Raleway', sans-serif
+    .wrapper 
+        position: relative
+        top: 70px
+        width: 100%
+        height: auto
+        display: block
+        padding: 0 30px 0 30px
+        border-top: 2px #757575 solid
+        border-radius: 5px 5px 0 0 
+        .dashInfo
+            width: 100%
+            height: auto 
+            display: flex 
+            flex-wrap: wrap
+            justify-content: space-around
+            .infoTab
+                position: relative
+                width: calc( 100% / 3 - 20px)
+                min-width: 300px
+                height: 100px
+                display: flex
+                border-radius: 5px 
+                cursor: pointer
+                margin: 20px 5px
+                transform: scale(1)
+                transition: ease-out .3s
+                // overflow: hidden
+                &:hover 
+                    transform: scale(1.02)
+                &:nth-child(1)
+                    background-image: linear-gradient(45deg,#3cbdb1 45%, #6fe373)
+                    box-shadow: -2px 6px 10px rgba(60, 189, 177, 0.43), 6px -4px 10px rgba(103, 221, 123, 0.58)
+                    
+                &:nth-child(2)
+                    background-image: linear-gradient(45deg, #7482d1 45%, #75c2ff)
+                    box-shadow: -2px 6px 10px rgba(116, 130, 209, 0.56), 6px -4px 10px rgba(117, 189, 252, 0.32)
+                    
+                &:nth-child(3)
+                    background-image: linear-gradient(45deg, #F44336 45%, #E91E63)
+                    box-shadow: -2px 6px 10px rgba(244, 67, 54, 0.5), 6px -4px 10px rgba(235, 38, 91, 0.22)
+                    
+                .count 
+                    position: relative
+                    top: 50%
+                    transform: translateY(-50%)
+                    width: 60px
+                    min-width: 60px
+                    height: 60px
+                    display: block
+                    text-align: center
+                    font-weight: 600
+                    font-size: 30px
+                    box-shadow: 0 0 0 1px white
+                    border-radius: 50%
+                    line-height: 60px
+                    color: whitesmoke
+                    margin: 0 20px
+                    font-family: 'Merriweather', serif
+                .title 
+                    width: 100%
+                    height: 100%
+                    display: inline-block
+                    text-align: center 
+                    line-height: 100px
+                    font-size: 18px
+                    color: white
+                    text-transform: capitalize
+                .drop 
+                    position: absolute
+                    top: 105%
+                    width: 100%
+                    min-width: 100%
+                    height: 0
+                    display: block
+                    background: #eeeeee
+                    box-shadow: 0px 5px 6px #1c1c1c24
+                    border-radius: 5px
+                    transition: ease-out .2s
+                    overflow: hidden
+                    &.ed 
+                        height: 150px
+
+
+    .container
+        position: relative
+        width: 100%
+        height: auto
+        display: block
+        .tab 
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+            margin: 30px 0
+            transition: ease-out .4s
+            opacity: 0

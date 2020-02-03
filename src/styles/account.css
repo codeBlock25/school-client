@@ -1,0 +1,69 @@
+.account {
+  position: fixed;
+  top: 3px;
+  left: 3px;
+  width: calc( 100vw - 6px);
+  height: calc( 100vh - 6px);
+  display: block;
+  background: #f7f7f7;
+  z-index: 10;
+  border-radius: 5px;
+}
+
+.account .wrapper {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: block;
+  width: 50%;
+  min-width: 300px;
+  max-width: 600px;
+  height: auto;
+}
+
+.account .wrapper h3 {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  display: block;
+  font-size: 30px;
+  text-transform: capitalize;
+  font-family: 'Raleway', sans-serif;
+}
+
+.account .wrapper form {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 10%;
+}
+
+.account .wrapper form .error {
+  width: 100%;
+  height: 0;
+  display: block;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 0 2px #ff7070;
+          box-shadow: 0 0 0 2px #ff7070;
+  text-align: center;
+  line-height: 50px;
+  font-family: 'Raleway', sans-serif;
+  -webkit-transition: ease-out .3s;
+  transition: ease-out .3s;
+  overflow: hidden;
+}
+
+.account .wrapper form .error.active {
+  height: 50px;
+}
+/*# sourceMappingURL=account.css.map */

@@ -1,0 +1,81 @@
+.Dashboard {
+  position: fixed;
+  top: 3px;
+  left: 3px;
+  width: calc( 100vw - 6px);
+  height: calc( 100vh - 6px);
+  display: block;
+  background: #f7f7f7;
+  z-index: 10;
+  border-radius: 5px;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 0 0 100px 0;
+}
+
+.Dashboard .wrapper {
+  position: relative;
+  top: 70px;
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 0 30px 0 30px;
+  border-top: 2px #757575 solid;
+  border-radius: 5px 5px 0 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+.Dashboard .wrapper .infoTab {
+  position: relative;
+  width: 90%;
+  min-width: 300px;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: ease-out .3s;
+  transition: ease-out .3s;
+  margin: 30px auto;
+  background-image: linear-gradient(45deg, #bababa 45%, #707070);
+  -webkit-box-shadow: -2px 6px 10px rgba(186, 186, 186, 0.44), 6px -4px 10px rgba(114, 114, 114, 0.43);
+          box-shadow: -2px 6px 10px rgba(186, 186, 186, 0.44), 6px -4px 10px rgba(114, 114, 114, 0.43);
+  font-family: 'Raleway', sans-serif;
+}
+
+.Dashboard .wrapper .infoTab .count {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 60px;
+  min-width: 100px;
+  height: 100px;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  font-size: 50px;
+  -webkit-box-shadow: 0 0 0 1px white;
+          box-shadow: 0 0 0 1px white;
+  border-radius: 50%;
+  line-height: 100px;
+  color: whitesmoke;
+  margin: 0 20px;
+  font-family: 'Merriweather', serif;
+}
+
+.Dashboard .wrapper .infoTab .title {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  text-align: center;
+  line-height: 200px;
+  font-size: 18px;
+  color: white;
+  text-transform: capitalize;
+  font-family: 'Raleway', sans-serif;
+}
+/*# sourceMappingURL=dashboard2.css.map */
