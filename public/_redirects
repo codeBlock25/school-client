@@ -1,13 +1,13 @@
-/login /login
+/login                         /login
 
-/register /register
+/register                      /register
 
-/dashboard /dashboard
+/dashboard                     /dashboard
 
-/admin/dashboard /admin/dashboard
+/admin/dashboard               /admin/dashboard
 
-/take /take 
+/take                          /take 
 
-/take/exam /take/exam 
+/take/exam                     /take/exam 
 
-/take/test /take/test
+/take/test                     /take/test
