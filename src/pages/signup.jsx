@@ -76,7 +76,7 @@ class Signup extends Component {
             console.log("passed")
             console.log("hi 4")
             await Axios({
-                url: "http://localhost:1100/api/account/login",
+                url: "https://smg-schoo.herokuapp.com/api/account/login",
                 method: "POST",
                 data: {
                     email: this.state.email,
