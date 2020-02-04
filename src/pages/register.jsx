@@ -76,7 +76,7 @@ class Register extends Component {
             document.querySelector(".account.reg form .error").classList.remove("active")
             console.log("passed")
             await Axios({
-                url: "http://localhost:1100/api/admin/add",
+                url: "https://smg-schoo.herokuapp.com/api/admin/add",
                 method: "POST",
                 timeout: 30000,
                 data: {
