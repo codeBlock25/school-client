@@ -230,7 +230,7 @@ async handleFingerPrint(){
     console.log(token)
     document.querySelector("form .error").classList.remove("active")
     await Axios({
-        url: "http://localhost:1100/api/admin/student",
+        url: "https://smg-schoo.herokuapp.com/api/admin/student",
         method: "POST",
         data: {
             first_name: this.state.first_name,
