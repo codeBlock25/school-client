@@ -1,7 +1,13 @@
 /login /login
+
 /register /register
+
 /dashboard /dashboard
+
 /admin/dashboard /admin/dashboard
+
 /take /take 
+
 /take/exam /take/exam 
+
 /take/test /take/test
