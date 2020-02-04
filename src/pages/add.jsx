@@ -169,7 +169,7 @@ async handleSubmit(e){
         document.querySelector("form .error").classList.remove("active")
         console.log("passed")
         await Axios({
-            url: "https://smg-schoo.herokuapp.com/api/admin/add",
+            url: "http://localhost:1100/api/admin/add",
             method: "POST",
             data: {
                 first_name: this.state.first_name,
@@ -230,7 +230,7 @@ async handleFingerPrint(){
     console.log(token)
     document.querySelector("form .error").classList.remove("active")
     await Axios({
-        url: "https://smg-schoo.herokuapp.com/api/admin/student",
+        url: "http://localhost:1100/api/admin/student",
         method: "POST",
         data: {
             first_name: this.state.first_name,

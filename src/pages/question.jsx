@@ -100,7 +100,7 @@ class Question extends Component {
             if(this.state.questions.length >=  this.state.questionTargetCount){
                 await Axios({
                     method: "POST",
-                    url: "https://smg-schoo.herokuapp.com/api/questions/set",
+                    url: "http://localhost:1100/api/questions/set",
                     data: {
                         token: token,
                         question_type: this.state.type,
