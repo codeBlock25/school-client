@@ -25,7 +25,7 @@ class Anwser extends React.Component {
     let token = localStorage.getItem("token")
     await Axios({
       method: "GET",
-      url: `http://localhost:1100/api/questions?questiontype=${questionType}&token=${token}`
+      url: `https://smg-schoo.herokuapp.com/api/questions?questiontype=${questionType}&token=${token}`
     }).then(data=>{
       this.setState({questions: data.data.questions})
       setTimeout(()=>{
