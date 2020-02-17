@@ -128,7 +128,7 @@ class Dashboard extends Component {
     async counter(){
         let token = await localStorage.getItem("token")
         await Axios({
-            url: `http://localhost:1100/api/use?token=${token}`,
+            url: `https://smg-schoo.herokuapp.com/api/use?token=${token}`,
             method: "GET"
         }).then(data=>{
           if (data.data !== null) {
