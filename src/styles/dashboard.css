@@ -146,4 +146,11 @@
   transition: ease-out .4s;
   opacity: 0;
 }
+
+.Dashboard .container .tab h3 {
+  width: 100%;
+  padding: 10px 100px;
+  height: auto;
+  font-size: 20px;
+}
 /*# sourceMappingURL=dashboard.css.map */

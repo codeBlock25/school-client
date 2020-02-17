@@ -4,6 +4,7 @@ import "../styles/header.css"
 import { addStaffAction, addStudentAction, setExamAction } from '../redux/actions/navigation';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom"
+import { StuffAction } from '../redux/actions/stuff';
 
 
 class Header extends Component {
@@ -14,21 +15,23 @@ class Header extends Component {
         }
     }
      componentDidMount(){
-        let status = localStorage.getItem("status")
-        this.setState({status: status})
+         this.props.setStatus(localStorage.getItem("status"))
     }
     render() {
         return (
             <header style={
-                this.props.location.pathname === "/register" || this.props.location.pathname === "/login" || this.props.location.pathname === "/question"?{display: "none"}
+                this.props.location.pathname === "/register" || this.props.location.pathname === "/login" || this.props.location.pathname === "/question" || this.props.status === "student" ?{display: "none"}
                 : {display: "flex"}
             }>
-                <h2 className="title">{this.state.status}</h2>
+                <h2 className="title">{this.props.status}</h2>
                 <ul>
+                    {
+                        this.props.status === "staff" ? 
                     <li onClick={this.props.setExam}><MenuBook/> Set question</li>
+                    :""}
                     <li onClick={this.props.addStudent}><Person/> Add student</li>
                     {
-                        this.state.status === "admin" ? 
+                        this.props.status === "admin" ? 
                         <li onClick={this.props.addStaff}><PermContactCalendar/> Add staff</li>
                         : ""
                     }
@@ -47,7 +50,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         isAddStaff: state.nav.add_staff_open,
         isAddStudent: state.nav.add_student_open,
-        isExamStaff: state.nav.add_exam_open
+        isExamStaff: state.nav.add_exam_open,
+        status: state.setting.status
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -60,6 +64,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         setExam: () => {
             dispatch(setExamAction())
+        },
+        setStatus: (payload)=>{
+            dispatch(StuffAction(payload))
         }
     }
 }

@@ -7,6 +7,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import Axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css'
 import { ClipLoader } from 'react-spinners';
+import { connect } from 'react-redux';
+import { StuffAction } from '../redux/actions/stuff';
 
 const styles = {
     textfield: {
@@ -76,7 +78,7 @@ class Signup extends Component {
             console.log("passed")
             console.log("hi 4")
             await Axios({
-                url: "https://smg-schoo.herokuapp.com/api/account/login",
+                url: "http://localhost:1100/api/account/login",
                 method: "POST",
                 data: {
                     email: this.state.email,
@@ -90,17 +92,19 @@ class Signup extends Component {
                     if (data.data.type === "admin") {
                         this.props.history.push("/admin/dashboard")
                         localStorage.setItem("status", "admin")
-                        console.log(data.data)
+                        this.props.setStatus("admin")
                     } else if(data.data.type === "staff") {
                         this.props.history.push("/dashboard")
                         localStorage.setItem("status", "staff")
+                        this.props.setStatus("staff")
                     } else {
                         this.props.history.push("/take")
                         localStorage.setItem("status", "student")
+                        this.props.setStatus("student")
                     }
                 }, 1500);
             }).catch(err=>{
-                toast.error("communition with school server broken")
+                toast.error("communication with school server broken")
                 setTimeout(() => {
                     this.setState({loading: false})
                 }, 500);
@@ -158,4 +162,17 @@ class Signup extends Component {
     }
 }
 
-export default withStyles(styles)(Signup)
+const mapStateToProps = (state, ownProps) => {
+    return {
+        status: state.setting.status
+    }
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        setStatus: (payload)=>{
+            dispatch(StuffAction(payload))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Signup))

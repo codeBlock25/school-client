@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../styles/answer.css"
 import { FormControlLabel, Checkbox, Button } from '@material-ui/core';
 import { ClipLoader } from "react-spinners"
@@ -9,80 +9,66 @@ class Anwser extends React.Component {
     super(props)
     this.state={
       questions: [
-        {
-          "question": "who beat am 1",
-          "answer": "b",
-          "firstOption": "john",
-          "secondOption": "amos",
-          "thirdOption": "victor",
-          "fouthOption": "andrew"
-        },
-        {
-          "question": "who beat am 2",
-          "answer": "b",
-          "firstOption": "john",
-          "secondOption": "amos",
-          "thirdOption": "victor",
-          "fouthOption": "andrew"
-        },
-        {
-          "question": "who beat am 3",
-          "answer": "b",
-          "firstOption": "john",
-          "secondOption": "amos",
-          "thirdOption": "victor",
-          "fouthOption": "andrew"
-        },
-        {
-          "question": "who beat am 4",
-          "answer": "b",
-          "firstOption": "john",
-          "secondOption": "amos",
-          "thirdOption": "victor",
-          "fouthOption": "andrew"
-        },
-        {
-          "question": "who beat am 5",
-          "answer": "b",
-          "firstOption": "john",
-          "secondOption": "amos",
-          "thirdOption": "victor",
-          "fouthOption": "andrew"
-        }
       ],
       choosen: "a",
       questionCount: 0,
-      pquestion: []
+      pquestion: [],
+      loading: false,
+      right: 0
     }
     this.fetchQuestion = this.fetchQuestion.bind(this)
+    this.takeAnwser = this.takeAnwser.bind(this)
   }
   async fetchQuestion(){
+    this.setState({loading: true})
     let questionType = this.props.location.pathname.split("/")[2]
     let token = localStorage.getItem("token")
     await Axios({
       method: "GET",
-      url: `https://smg-schoo.herokuapp.com/api/questions?questiontype=${questionType}&token=${token}`
+      url: `http://localhost:1100/api/questions?questiontype=${questionType}&token=${token}`
+    }).then(data=>{
+      this.setState({questions: data.data.questions})
+      setTimeout(()=>{
+        this.setState({loading: false})
+      }, 1000)
+    }).catch(err=>{
+      this.setState({questions: []})
+      setTimeout(()=>{
+        this.setState({loading: false})
+      }, 1000)
+      console.log(err)
     })
   }
-  componentDidMount(){
-    this.fetchQuestion()
+  takeAnwser(){
+    if (this.state.questions[this.state.questionCount].anwser === this.state.choosen) {
+      this.setState({right: this.state.right + 1})
+    } else {
+      this.setState({right: this.state.right})
+    }
+  }
+  async componentDidMount(){
+    await this.fetchQuestion()
     this.setState({pquestion: this.state.questions[this.state.questionCount]})
+    console.log(this.state.questions[this.state.questionCount])
   }
   render (){
         return (
             <div className="Answer">
+              { this.state.loading?
               <div className="loadQ">
                 <div className="l">
                   <span>loading...</span>
                   <ClipLoader size="200" color="black"/>
                 </div>
-              </div>
-                {/* <div className="wrapper">
+              </div>:
+                this.state.questions.length <= 0 ?
+                <div className="wrapper">
                     <div className="quest">
                         no text/exam at this moment
                     </div>
-                </div> */}
-                {<div className="answerWrapper" style={{display: "none"}}>
+                </div>
+                :
+                <div className="answerWrapper">
                     <h3 className="title">Exam</h3>
                     <p className="sht">{this.state.questions.length} questions {this.state.questions.length - this.state.questionCount} to go</p>
                   <span className="questionToBe">{this.state.questions[this.state.questionCount].question}</span>
@@ -120,8 +106,9 @@ class Anwser extends React.Component {
                       }else {
                         this.setState({questionCount:  this.state.questionCount + 1})
                       }
-                    }}>next</Button>
-                </div>}
+                    }}>{this.state.questions.length - 1 === this.state.questionCount? "submit": "next"}</Button>
+                </div>
+                }
             </div>
         )
     }

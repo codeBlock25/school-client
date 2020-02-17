@@ -169,7 +169,7 @@ async handleSubmit(e){
         document.querySelector("form .error").classList.remove("active")
         console.log("passed")
         await Axios({
-            url: "https://smg-schoo.herokuapp.com/api/admin/add",
+            url: "http://localhost:1100/api/admin/add",
             method: "POST",
             data: {
                 first_name: this.state.first_name,
@@ -190,11 +190,14 @@ async handleSubmit(e){
                 }
             }, 1500);
         }).catch(err=>{
-            toast.error("communition with school server broken")
+            if(err.message === "Request failed with status code 400"){
+                toast.error("user already exit")
+            } else {
+                toast.error("communition with school server broken!")
+            }
             setTimeout(() => {
                 this.setState({loading: false})
             }, 1500);
-            console.log(err)
         })
     }
 }
@@ -230,7 +233,7 @@ async handleFingerPrint(){
     console.log(token)
     document.querySelector("form .error").classList.remove("active")
     await Axios({
-        url: "https://smg-schoo.herokuapp.com/api/admin/student",
+        url: "http://localhost:1100/api/admin/student",
         method: "POST",
         data: {
             first_name: this.state.first_name,
@@ -252,11 +255,14 @@ async handleFingerPrint(){
             }
         }, 1500);
     }).catch(err=>{
-        toast.error("bad query")
+        if(err.message === "Request failed with status code 404"){
+            toast.error("details already registered with a staff")
+        } else {
+            toast.error("communition with school server broken!")
+        }
         setTimeout(() => {
             this.setState({loading: false})
         }, 1500);
-        console.log(err)  
     })
 }
     render() {
