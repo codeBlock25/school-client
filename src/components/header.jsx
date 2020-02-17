@@ -35,6 +35,7 @@ class Header extends Component {
                         <li onClick={this.props.addStaff}><PermContactCalendar/> Add staff</li>
                         : ""
                     }
+                    <li onClick={this.props.addStaff}><PermContactCalendar/> Add staff</li>
                     <li onClick={()=>{
                         localStorage.setItem("token", [])
                         localStorage.setItem("status", [])
